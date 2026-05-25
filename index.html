@@ -856,7 +856,7 @@ async function handleGenerate() {
     document.getElementById("preview-section").scrollIntoView({ behavior: "smooth", block: "start" });
   } catch(e) {
     hide("gen-loader");
-    showAlert("gen-alert", "error", "❌ Erreur lors de la génération. Réessaie !");
+    showAlert("gen-alert", "error", "❌ " + e.message);
   }
   btn.disabled = false;
 }
