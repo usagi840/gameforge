@@ -587,8 +587,8 @@ async function callAI(userPrompt) {
       "Authorization": "Bearer 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"
     },
     body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      max_tokens: 32768,
+      model: "llama-3.1-8b-instant",
+      max_tokens: 6000,
       messages: [
         { role: "system", content: "Tu es un expert en création de mini-jeux HTML/CSS/JS complets et autonomes. Génère un fichier HTML complet (tout inclus dans un seul fichier). Le jeu doit être immédiatement jouable, visuellement attrayant avec un style dark moderne. Inclus toujours un titre, les instructions, un score si applicable, et un game over avec restart. RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et termine par </html>. Aucun texte avant ou après." },
         { role: "user", content: `Crée ce jeu : ${userPrompt}` }
