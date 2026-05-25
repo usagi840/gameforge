@@ -580,30 +580,24 @@ async function fsDelete(path) {
 // ANTHROPIC API
 // =====================================================================
 async function callAI(userPrompt) {
-  const prompt = `Tu es un expert en création de mini-jeux HTML/CSS/JS complets et autonomes.
-Génère un fichier HTML complet (tout inclus : HTML, CSS, JS dans un seul fichier).
-Le jeu doit être immédiatement jouable, visuellement attrayant, avec un style dark moderne.
-Inclus toujours : un titre affiché, les instructions, un score si applicable, un game over avec restart.
-Utilise des Canvas ou du DOM selon ce qui convient.
-RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et termine par </html>. Aucun commentaire avant ou après.
-
-Crée ce jeu : ${userPrompt}`;
-
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={AIzaSyDGVRe9e52dftL605dLod3S8w9NaVQ1ciI}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { maxOutputTokens: 8192, temperature: 0.7 }
-      })
-    }
-  );
+  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer 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"
+    },
+    body: JSON.stringify({
+      model: "llama-3.3-70b-versatile",
+      max_tokens: 8000,
+      messages: [
+        { role: "system", content: "Tu es un expert en création de mini-jeux HTML/CSS/JS complets et autonomes. Génère un fichier HTML complet (tout inclus dans un seul fichier). Le jeu doit être immédiatement jouable, visuellement attrayant avec un style dark moderne. Inclus toujours un titre, les instructions, un score si applicable, et un game over avec restart. RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et termine par </html>. Aucun texte avant ou après." },
+        { role: "user", content: `Crée ce jeu : ${userPrompt}` }
+      ]
+    })
+  });
   const data = await res.json();
   if (data.error) throw new Error(data.error.message);
-  const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-  // Nettoie les balises markdown si Gemini en ajoute
+  const raw = data.choices?.[0]?.message?.content || "";
   return raw.replace(/^```html\s*/i, "").replace(/```\s*$/i, "").trim();
 }
 
