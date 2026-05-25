@@ -547,16 +547,9 @@ async function callAI(userPrompt){
     headers:{"Content-Type":"application/json","Authorization":`Bearer ${GROQ_KEY}`},
     body:JSON.stringify({
       model:"llama-3.3-70b-versatile",
-      max_tokens:4000,
+      max_tokens:5000,
       messages:[
-        {role:"system",content:`Tu es un expert game developer spécialisé en jeux HTML5/Canvas.
-Crée un jeu complet, fluide et VRAIMENT jouable avec ces exigences :
-GAMEPLAY : mécaniques solides, contrôles réactifs, difficulté progressive, game over + restart.
-VISUEL : style dark néon moderne, Canvas 2D de préférence, animations fluides 60fps, effets particules si possible.
-CODE : tout dans un seul fichier HTML, JS optimisé requestAnimationFrame, pas de librairies externes.
-OBLIGATOIRE : titre stylé, score en temps réel, instructions claires, écran de démarrage, écran game over avec meilleur score.
-MOBILE : les contrôles tactiles doivent fonctionner (touch events) en plus du clavier. Le canvas doit s'adapter à la taille de l'écran.
-RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et termine par </html>. Aucun texte avant ou après.`},
+        {role:"system",content:`Génère un jeu HTML5 complet en un seul fichier. Canvas 2D, style dark néon, 60fps, score, game over, restart, contrôles clavier+tactile. UNIQUEMENT le code HTML brut, commence par <!DOCTYPE html>.`},
         {role:"user",content:`Crée ce jeu : ${userPrompt}`}
       ]
     })
