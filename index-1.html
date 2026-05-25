@@ -546,8 +546,8 @@ async function callAI(userPrompt){
     method:"POST",
     headers:{"Content-Type":"application/json","Authorization":`Bearer ${GROQ_KEY}`},
     body:JSON.stringify({
-      model:"llama-3.1-8b-instant",
-      max_tokens:8000,
+      model:"llama-3.3-70b-versatile",
+      max_tokens:4000,
       messages:[
         {role:"system",content:`Tu es un expert game developer spécialisé en jeux HTML5/Canvas.
 Crée un jeu complet, fluide et VRAIMENT jouable avec ces exigences :
