@@ -590,13 +590,7 @@ async function callAI(userPrompt) {
       model: "llama-3.3-70b-versatile",
       max_tokens: 32768,
       messages: [
-        { role: "system", content: "Tu es un expert game developer spécialisé en jeux HTML5/Canvas.
-Crée un jeu complet, fluide et VRAIMENT jouable avec ces exigences :
-GAMEPLAY : mécaniques solides, contrôles réactifs, difficulté progressive, game over + restart.
-VISUEL : style dark néon moderne, Canvas 2D de préférence, animations fluides 60fps, effets particules si possible.
-CODE : tout dans un seul fichier HTML, JS optimisé requestAnimationFrame, pas de librairies externes.
-OBLIGATOIRE : titre stylé, score en temps réel, instructions claires, écran de démarrage, écran game over avec meilleur score.
-RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par !DOCTYPE html et termine par /html. Aucun texte avant ou après." },
+        { role: "system", content: "Tu es un expert en création de mini-jeux HTML/CSS/JS complets et autonomes. Génère un fichier HTML complet (tout inclus dans un seul fichier). Le jeu doit être immédiatement jouable, visuellement attrayant avec un style dark moderne. Inclus toujours un titre, les instructions, un score si applicable, et un game over avec restart. RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et termine par </html>. Aucun texte avant ou après." },
         { role: "user", content: `Crée ce jeu : ${userPrompt}` }
       ]
     })
