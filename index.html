@@ -498,7 +498,7 @@ a{color:inherit;text-decoration:none}
 const FIREBASE_PROJECT = "gameforge-aa99a"; // ex: "gameforge-abc12"
 const FS_BASE = `https://firestore.googleapis.com/v1/projects/${FIREBASE_PROJECT}/databases/(default)/documents`;
 
-const GEMINI_API_KEY = "AlzaSyDP0OG7EUmespDBDsJ_YR7zPa8Amhhp0kY"; // Obtiens-la gratuitement sur https://aistudio.google.com
+const GEMINI_API_KEY = "AIzaSyDP0OG7EUmespDBDsJ_YR7zPa8Amhhp0kY"; // Obtiens-la gratuitement sur https://aistudio.google.com
 
 // =====================================================================
 // STATE
@@ -590,7 +590,7 @@ RÉPONDS UNIQUEMENT avec le code HTML brut. Commence par <!DOCTYPE html> et term
 Crée ce jeu : ${userPrompt}`;
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${AlzaSyDP0OG7EUmespDBDsJ_YR7zPa8Amhhp0kY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${AIzaSyDP0OG7EUmespDBDsJ_YR7zPa8Amhhp0kY}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
